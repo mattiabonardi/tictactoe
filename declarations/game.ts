@@ -1,4 +1,11 @@
 export type Game = {
+  start: Date;
+  end: Date;
+  steps: Step[];
+  winner: Gamer;
+};
+
+export type GameTrack = {
   ip: string;
   address: Address;
   start: Date;
@@ -19,7 +26,7 @@ export type Address = {
   city: string;
 };
 
-export type Gamer = "USER" | "CPU" | "DRAW";
+export type Gamer = "USER" | "CPU" | "DRAW" | undefined;
 
 export type Position = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 

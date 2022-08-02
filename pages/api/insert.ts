@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import geoip from "geoip-lite";
-import type { Address, Game, InsertDto } from "../../declarations/game";
+import type { Address, GameTrack, InsertDto } from "../../declarations/game";
 import { connectToDatabase } from "../../utility/mongodb";
 
 /**
@@ -33,7 +33,7 @@ export default async function handler(
     address.timezone = geo.timezone;
   }
   // create game
-  const game: Game = {
+  const game: GameTrack = {
     ...inserDto,
     end: new Date(),
     ip: ip,
