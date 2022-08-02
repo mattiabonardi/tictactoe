@@ -28,3 +28,12 @@ export type InsertDto = {
   start: Date;
   winner: Gamer;
 };
+
+export type Move = {
+  row: number;
+  col: number;
+};
+
+export type Board = BoardCell[][];
+
+export type BoardCell = "x" | "o" | "_";
