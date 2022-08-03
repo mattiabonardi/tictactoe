@@ -1,4 +1,5 @@
 import { Board, Game, Move } from "../declarations/game";
+import axios from "axios";
 
 /**
  * Check game status
@@ -25,7 +26,7 @@ export async function checkGame(board: Board) {
  * @param board
  * @returns
  */
-export async function calculateCpuMove(board: Board): Move {
+export async function calculateCpuMove(board: Board) {
   const response = await axios.post("/api/calculate", {
     board: board,
   });
@@ -43,4 +44,12 @@ export function resetGame(game: Game) {
     steps: [],
     winner: undefined,
   };
+}
+
+export function createEmptyBoard(): Board {
+  return [
+    ["_", "_", "_"],
+    ["_", "_", "_"],
+    ["_", "_", "_"],
+  ];
 }
