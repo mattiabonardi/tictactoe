@@ -118,42 +118,65 @@ function minimax(board: Board, depth: number, isMax: boolean) {
 
 // This will return the best possible
 // move for the player
-export function findBestMove(board: Board) {
-  let bestVal = -1000;
+export function tictactoe(board: Board) {
+  // check the win before
+  let gameSatus = getGameStatus(board);
   let bestMove: Move = {
     row: -1,
     col: -1,
   };
-  // Traverse all cells, evaluate
-  // minimax function for all empty
-  // cells. And return the cell
-  // with optimal value.
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      // Check if cell is empty
-      if (board[i][j] == "_") {
-        // Make the move
-        board[i][j] = player;
+  if (gameSatus == -1) {
+    let bestVal = -1000;
+    // Traverse all cells, evaluate
+    // minimax function for all empty
+    // cells. And return the cell
+    // with optimal value.
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        // Check if cell is empty
+        if (board[i][j] == "_") {
+          // Make the move
+          board[i][j] = player;
 
-        // compute evaluation function
-        // for this move.
-        let moveVal = minimax(board, 0, false);
+          // compute evaluation function
+          // for this move.
+          let moveVal = minimax(board, 0, false);
 
-        // Undo the move
-        board[i][j] = "_";
+          // Undo the move
+          board[i][j] = "_";
 
-        // If the value of the current move
-        // is more than the best value, then
-        // update best
-        if (moveVal > bestVal) {
-          bestMove.row = i;
-          bestMove.col = j;
-          bestVal = moveVal;
+          // If the value of the current move
+          // is more than the best value, then
+          // update best
+          if (moveVal > bestVal) {
+            bestMove.row = i;
+            bestMove.col = j;
+            bestVal = moveVal;
+          }
         }
       }
     }
   }
-  return bestMove;
+  // check the win after
+  if (bestMove.row > -1 && bestMove.col > -1) {
+    const boardCopy: Board = { ...board };
+    boardCopy[bestMove.row][bestMove.col] = "x";
+    gameSatus = getGameStatus(boardCopy);
+  } else {
+    let isFinished = true;
+    for (let i = 0; i < 3; i++) {
+      if (board[i].includes("_")) {
+        isFinished = false;
+      }
+    }
+    if (isFinished) {
+      gameSatus = 2;
+    }
+  }
+  return {
+    status: gameSatus,
+    move: bestMove,
+  };
 }
 
 /**
@@ -165,7 +188,7 @@ export function findBestMove(board: Board) {
  * 1 = "O wins"
  * 2 = "draw"
  */
-export function getGameStatus(board: Board) {
+function getGameStatus(board: Board) {
   // check if the game is finished
   let isFinished = true;
   for (let i = 0; i < 3; i++) {

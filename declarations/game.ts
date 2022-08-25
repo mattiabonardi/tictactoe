@@ -41,6 +41,13 @@ export type Move = {
   col: number;
 };
 
-export type Board = BoardCell[][];
+export type Board = BoardCellValue[][];
 
-export type BoardCell = "x" | "o" | "_";
+export type BoardCellValue = "x" | "o" | "_";
+
+export type GraphicBoard = {
+  [index: string]: {
+    color: string;
+    value: BoardCellValue;
+  };
+};

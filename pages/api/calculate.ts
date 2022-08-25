@@ -1,14 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Board, Move } from "../../declarations/game";
-import { findBestMove } from "../../ia/tictactoe";
-
-/**
- * 1.1 | 1.2 | 1.3
- * ----+-----+----
- * 2.1 | 2.2 | 2.3
- * ----+-----+----
- * 3.1 | 3.2 | 3.3
- */
+import { tictactoe } from "../../ia/tictactoe";
 
 /**
  * Endpoint: /calculate
@@ -21,12 +13,15 @@ import { findBestMove } from "../../ia/tictactoe";
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<{
+    status: number;
     move: Move;
   }>
 ) {
   const board: Board = req.body.board;
-  const move: Move = findBestMove(board);
+  const { move, status } = tictactoe(board);
+  console.log("STATUS->", status);
   res.status(200).json({
+    status: status,
     move: move,
   });
 }
