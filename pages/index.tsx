@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import styles from "../styles/pages/index.module.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Board, GraphicBoard } from "../declarations/game";
