@@ -1,3 +1,98 @@
+/** Main */
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Roboto';
+
+}
+
+.header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title{
+  color: #E85300;
+  font-weight: 500;
+  font-size: 42px;
+  font-family: 'Roboto';
+}
+
+/** START GAME */
+.start{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.largeIcon{
+  width: 40px;
+  height: 40px;
+}
+
+/** Footer */
+.footer{
+  margin-top: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/** Main */
+.resultContainer{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resultLabel{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 42px;
+  color: #B0B0B0;
+  font-weight: 300;
+}
+
+.draw{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: #484848;
+  font-size: 62px;
+}
+
+.defeat{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: #0000FF;
+  font-size: 62px;
+}
+
+.actions{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .scene{
   width:100vw;
   height:100vh;

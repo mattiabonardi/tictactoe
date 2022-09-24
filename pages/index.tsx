@@ -9,14 +9,26 @@ import {
   createEmptyBoard,
   createInitialGraphicBoard,
 } from "../managers/gameManager";
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import { CustomButton } from "../components/customButton";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Button } from "@mui/material";
+import ReplayIcon from "@mui/icons-material/Replay";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Index: NextPage = () => {
-  return <Chessboard></Chessboard>;
+  return (
+    <>
+      <div className={styles.container}>
+        <Chessboard></Chessboard>
+      </div>
+    </>
+  );
 };
 
 function Chessboard(_props) {
   const [hovered, setHovered] = useState(false);
-  const [status, setStatus] = useState<number>(-1);
+  const [status, setStatus] = useState<number>(3);
   const [board, setBoard] = useState<Board>(createEmptyBoard());
   const [graphicBoard, setGraphicBoard] = useState<GraphicBoard>(
     createInitialGraphicBoard()
@@ -72,11 +84,15 @@ function Chessboard(_props) {
     }
   }
 
-  async function restartGame() {
+  async function startGame() {
     // reset board & graphic board
     setBoard(createEmptyBoard());
     setGraphicBoard(createInitialGraphicBoard());
     setStatus(-1);
+  }
+
+  async function toHome() {
+    setStatus(3);
   }
 
   switch (status) {
@@ -208,14 +224,115 @@ function Chessboard(_props) {
         </>
       );
     case 0:
-      return <h1>X wins</h1>;
+      return (
+        <>
+          <header className={styles.header}>
+            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
+          </header>
+          <div className={styles.resultContainer}>
+            <h3 className={styles.resultLabel}>result</h3>
+            <h2 className={styles.defeat}>DEFEAT</h2>
+          </div>
+          <div className={styles.actions}>
+            <CustomButton
+              variant="contained"
+              startIcon={<ReplayIcon className={styles.largeIcon} />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                startGame();
+              }}
+            >
+              RESTART
+            </CustomButton>
+            <CustomButton
+              variant="text"
+              startIcon={<ExitToAppIcon className={styles.largeIcon} />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                toHome();
+              }}
+            >
+              EXIT
+            </CustomButton>
+          </div>
+        </>
+      );
     case 1:
-      return <h1>O wins</h1>;
+      return <h1>Impossible situation, you are a fucking hacker!</h1>;
     case 2:
       return (
         <>
-          <h1>Draw</h1>
-          <button onClick={restartGame}>RESTART THE GAME</button>
+          <header className={styles.header}>
+            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
+          </header>
+          <div className={styles.resultContainer}>
+            <h3 className={styles.resultLabel}>result</h3>
+            <h2 className={styles.result}>DRAW</h2>
+          </div>
+          <div className={styles.actions}>
+            <CustomButton
+              variant="contained"
+              startIcon={<ReplayIcon className={styles.largeIcon} />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                startGame();
+              }}
+            >
+              RESTART
+            </CustomButton>
+            <CustomButton
+              variant="text"
+              startIcon={<ExitToAppIcon className={styles.largeIcon} />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                toHome();
+              }}
+            >
+              EXIT
+            </CustomButton>
+          </div>
+        </>
+      );
+    case 3:
+      return (
+        <>
+          <header className={styles.header}>
+            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
+          </header>
+          <div className={styles.main}>
+            <div className={styles.start}>
+              <CustomButton
+                variant="contained"
+                startIcon={
+                  <PlayArrowRoundedIcon className={styles.largeIcon} />
+                }
+                size="large"
+                color="primary"
+                onClick={() => {
+                  startGame();
+                }}
+              >
+                START
+              </CustomButton>
+            </div>
+          </div>
+          <footer className={styles.footer}>
+            <Button
+              variant="text"
+              startIcon={<GitHubIcon />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                toGitHub();
+              }}
+            >
+              GITHUB
+            </Button>
+          </footer>
         </>
       );
   }
@@ -233,6 +350,10 @@ const CameraController = () => {
     };
   }, [camera, gl]);
   return null;
+};
+
+const toGitHub = () => {
+  window.open("https://github.com/mattiabonardi/tictactoe-ddd", "_blank");
 };
 
 export default Index;
