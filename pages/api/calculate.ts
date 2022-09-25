@@ -19,7 +19,6 @@ export default function handler(
 ) {
   const board: Board = req.body.board;
   const { move, status } = tictactoe(board);
-  console.log("STATUS->", status);
   res.status(200).json({
     status: status,
     move: move,

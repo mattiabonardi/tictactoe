@@ -105,7 +105,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[-2, 2, 0]}
+                position={[-1.5, 1.5, 0]}
                 userData={[0, 0]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -118,7 +118,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[0, 2, 0]}
+                position={[0, 1.5, 0]}
                 userData={[0, 1]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -131,7 +131,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[2, 2, 0]}
+                position={[1.5, 1.5, 0]}
                 userData={[0, 2]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -144,7 +144,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[-2, 0, 0]}
+                position={[-1.5, 0, 0]}
                 userData={[1, 0]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -170,7 +170,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[2, 0, 0]}
+                position={[1.5, 0, 0]}
                 userData={[1, 2]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -183,7 +183,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[-2, -2, 0]}
+                position={[-1.5, -1.5, 0]}
                 userData={[2, 0]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -196,7 +196,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[0, -2, 0]}
+                position={[0, -1.5, 0]}
                 userData={[2, 1]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -209,7 +209,7 @@ function Chessboard(_props) {
                 onClick={onClick}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                position={[2, -2, 0]}
+                position={[1.5, -1.5, 0]}
                 userData={[2, 2]}
               >
                 <sphereBufferGeometry args={[0.4, 30, 30]} attach="geometry" />
@@ -260,7 +260,43 @@ function Chessboard(_props) {
         </>
       );
     case 1:
-      return <h1>Impossible situation, you are a fucking hacker!</h1>;
+      return (
+        <>
+          <header className={styles.header}>
+            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
+          </header>
+          <div className={styles.resultContainer}>
+            <h3 className={styles.resultLabel}>result</h3>
+            <h2 className={styles.success}>
+              Great job, you found my AI bug !!!
+            </h2>
+          </div>
+          <div className={styles.actions}>
+            <CustomButton
+              variant="contained"
+              startIcon={<ReplayIcon className={styles.largeIcon} />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                startGame();
+              }}
+            >
+              RESTART
+            </CustomButton>
+            <CustomButton
+              variant="text"
+              startIcon={<ExitToAppIcon className={styles.largeIcon} />}
+              size="large"
+              color="primary"
+              onClick={() => {
+                toHome();
+              }}
+            >
+              EXIT
+            </CustomButton>
+          </div>
+        </>
+      );
     case 2:
       return (
         <>
