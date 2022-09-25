@@ -3,11 +3,12 @@ import styles from "../styles/pages/index.module.css";
 import React, { useEffect, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Board, GraphicBoard } from "../declarations/game";
+import { Board, GraphicBoard, InsertDto } from "../declarations/game";
 import {
   calculateCpuMove,
   createEmptyBoard,
   createInitialGraphicBoard,
+  savaData,
 } from "../managers/gameManager";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import { CustomButton } from "../components/customButton";
@@ -33,6 +34,7 @@ function Chessboard(_props) {
   const [graphicBoard, setGraphicBoard] = useState<GraphicBoard>(
     createInitialGraphicBoard()
   );
+  const [start, setStart] = useState<Date>();
 
   useEffect(() => {
     document.body.style.cursor = hovered ? "pointer" : "auto";
@@ -89,12 +91,14 @@ function Chessboard(_props) {
     setBoard(createEmptyBoard());
     setGraphicBoard(createInitialGraphicBoard());
     setStatus(-1);
+    setStart(new Date());
   }
 
   async function toHome() {
     setStatus(3);
   }
 
+  let insertDto: InsertDto;
   switch (status) {
     case -1:
       return (
@@ -224,6 +228,13 @@ function Chessboard(_props) {
         </>
       );
     case 0:
+      // save data
+      insertDto = {
+        board: board,
+        start: start,
+        winner: "CPU",
+      };
+      savaData(insertDto);
       return (
         <>
           <header className={styles.header}>
@@ -260,6 +271,13 @@ function Chessboard(_props) {
         </>
       );
     case 1:
+      // save data
+      insertDto = {
+        board: board,
+        start: start,
+        winner: "USER",
+      };
+      savaData(insertDto);
       return (
         <>
           <header className={styles.header}>
@@ -298,6 +316,13 @@ function Chessboard(_props) {
         </>
       );
     case 2:
+      // save data
+      insertDto = {
+        board: board,
+        start: start,
+        winner: "DRAW",
+      };
+      savaData(insertDto);
       return (
         <>
           <header className={styles.header}>

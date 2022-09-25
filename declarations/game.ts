@@ -10,7 +10,7 @@ export type GameTrack = {
   address: Address;
   start: Date;
   end: Date;
-  steps: Step[];
+  board: Board;
   winner: Gamer;
 };
 
@@ -31,7 +31,7 @@ export type Gamer = "USER" | "CPU" | "DRAW" | undefined;
 export type Position = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 export type InsertDto = {
-  steps: Step[];
+  board: Board;
   start: Date;
   winner: Gamer;
 };

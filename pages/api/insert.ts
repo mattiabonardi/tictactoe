@@ -4,7 +4,7 @@ import type { Address, GameTrack, InsertDto } from "../../declarations/game";
 import { connectToDatabase } from "../../utility/mongodb";
 
 /**
- * Endpoint: /calculate
+ * Endpoint: api/insert
  * Method: POST
  * Body (json)
  *  InsertDto
