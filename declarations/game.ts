@@ -30,12 +30,6 @@ export type Gamer = "USER" | "CPU" | "DRAW" | undefined;
 
 export type Position = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
-export type InsertDto = {
-  board: Board;
-  start: Date;
-  winner: Gamer;
-};
-
 export type Move = {
   row: number;
   col: number;

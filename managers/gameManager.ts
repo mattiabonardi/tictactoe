@@ -2,8 +2,6 @@ import {
   Board,
   Game,
   GraphicBoard,
-  InsertDto,
-  Move,
 } from "../declarations/game";
 import axios from "axios";
 
@@ -91,13 +89,4 @@ export function createInitialGraphicBoard(): GraphicBoard {
       value: "_",
     },
   };
-}
-
-/**
- * Save game info to database
- * @param insertDto
- * @returns
- */
-export async function savaData(insertDto: InsertDto) {
-  axios.post("/api/insert", insertDto);
 }
