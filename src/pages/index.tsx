@@ -11,10 +11,10 @@ import {
 } from "../managers/gameManager";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import { CustomButton } from "../components/customButton";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import { Button } from "@mui/material";
-import ReplayIcon from "@mui/icons-material/Replay";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
+import { Result } from "../components/result";
+import { Actions } from "../components/actions";
 
 const Index: NextPage = () => {
   return (
@@ -232,121 +232,44 @@ function Chessboard(_props) {
     case 0:
       return (
         <>
-          <header className={styles.header}>
-            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
-          </header>
-          <div className={styles.resultContainer}>
-            <h3 className={styles.resultLabel}>result</h3>
-            <h2 className={styles.defeat}>DEFEAT</h2>
-          </div>
-          <div className={styles.actions}>
-            <CustomButton
-              variant="contained"
-              startIcon={<ReplayIcon className={styles.largeIcon} />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                startGame();
-              }}
-            >
-              RESTART
-            </CustomButton>
-            <CustomButton
-              variant="text"
-              startIcon={<ExitToAppIcon className={styles.largeIcon} />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                toHome();
-              }}
-            >
-              EXIT
-            </CustomButton>
-          </div>
+          <Header></Header>
+          <main className={styles.main}>
+            <div className={styles.resultContainer}>
+              <Result type="defeat"></Result>
+              <Actions startGameFN={startGame} toHomeFN={toHome}></Actions>
+            </div>
+          </main>
         </>
       );
     case 1:
       return (
         <>
-          <header className={styles.header}>
-            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
-          </header>
-          <div className={styles.resultContainer}>
-            <h3 className={styles.resultLabel}>result</h3>
-            <h2 className={styles.success}>
-              Great job, you found my AI bug !!!
-            </h2>
-          </div>
-          <div className={styles.actions}>
-            <CustomButton
-              variant="contained"
-              startIcon={<ReplayIcon className={styles.largeIcon} />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                startGame();
-              }}
-            >
-              RESTART
-            </CustomButton>
-            <CustomButton
-              variant="text"
-              startIcon={<ExitToAppIcon className={styles.largeIcon} />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                toHome();
-              }}
-            >
-              EXIT
-            </CustomButton>
-          </div>
+          <Header></Header>
+          <main className={styles.main}>
+            <div className={styles.resultContainer}>
+              <Result type="success"></Result>
+              <Actions startGameFN={startGame} toHomeFN={toHome}></Actions>
+            </div>
+          </main>
         </>
       );
     case 2:
       return (
         <>
-          <header className={styles.header}>
-            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
-          </header>
-          <div className={styles.resultContainer}>
-            <h3 className={styles.resultLabel}>result</h3>
-            <h2 className={styles.result}>DRAW</h2>
-          </div>
-          <div className={styles.actions}>
-            <CustomButton
-              variant="contained"
-              startIcon={<ReplayIcon className={styles.largeIcon} />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                startGame();
-              }}
-            >
-              RESTART
-            </CustomButton>
-            <CustomButton
-              variant="text"
-              startIcon={<ExitToAppIcon className={styles.largeIcon} />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                toHome();
-              }}
-            >
-              EXIT
-            </CustomButton>
-          </div>
+          <Header></Header>
+          <main className={styles.main}>
+            <div className={styles.resultContainer}>
+              <Result type="draw"></Result>
+              <Actions startGameFN={startGame} toHomeFN={toHome}></Actions>
+            </div>
+          </main>
         </>
       );
     case 3:
       return (
         <>
-          <header className={styles.header}>
-            <h1 className={styles.title}>TIC TAC TOE DDD</h1>
-          </header>
-          <div className={styles.main}>
-            <div className={styles.start}>
+          <Header></Header>
+          <main className={styles.main}>
               <CustomButton
                 variant="contained"
                 startIcon={
@@ -360,21 +283,8 @@ function Chessboard(_props) {
               >
                 START
               </CustomButton>
-            </div>
-          </div>
-          <footer className={styles.footer}>
-            <Button
-              variant="text"
-              startIcon={<GitHubIcon />}
-              size="large"
-              color="primary"
-              onClick={() => {
-                toGitHub();
-              }}
-            >
-              GITHUB
-            </Button>
-          </footer>
+          </main>
+          <Footer></Footer>
         </>
       );
   }
@@ -392,10 +302,6 @@ const CameraController = () => {
     };
   }, [camera, gl]);
   return null;
-};
-
-const toGitHub = () => {
-  window.open("https://github.com/mattiabonardi/tictactoe-ddd", "_blank");
 };
 
 export default Index;
