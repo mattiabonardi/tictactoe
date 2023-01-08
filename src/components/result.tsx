@@ -8,21 +8,21 @@ export const Result: React.FC<ResultProps> = (props) => {
     if(props.type == "draw"){
         return (
             <h2 className={styles.draw}>
-                DRAW
+                draw
             </h2>
         )
     } 
     else if(props.type == "success"){
         return (
             <h2 className={styles.success}>
-                Great job, you found my AI bug !!!
+                great job, you won!
             </h2>
         );
     }
     else {
         return (
             <h2 className={styles.defeat}>
-                DEFEAT
+                sorry, you lost
             </h2>
         );
     }

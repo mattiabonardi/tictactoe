@@ -55,7 +55,7 @@ function Chessboard(_props) {
           return {
             ...value,
             [row + "." + col]: {
-              color: "#ff0000",
+              color: "#FF355E",
               value: "o",
             },
           };
@@ -73,7 +73,7 @@ function Chessboard(_props) {
             return {
               ...value,
               [move.row + "." + move.col]: {
-                color: "#0000ff",
+                color: "#001eff",
                 value: "x",
               },
             };

@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
                 toGitHub();
               }}
             >
-              GITHUB
+              source code
             </Button>
           </footer>
     );

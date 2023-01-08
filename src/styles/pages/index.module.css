@@ -6,6 +6,7 @@
   height: 100vh;
   width: 100vw;
   font-family: 'Roboto';
+  background-color: #1c1c1c;
 }
 
 .header{
@@ -15,7 +16,7 @@
 }
 
 .title{
-  color: #E85300;
+  color: #FF9933;
   font-weight: 500;
   font-size: 42px;
   font-family: 'Roboto';
@@ -65,7 +66,7 @@
   margin: 0;
   text-align: center;
   color: #484848;
-  font-size: 62px;
+  font-size: 30px;
 }
 
 .defeat{
@@ -73,8 +74,8 @@
   padding: 0;
   margin: 0;
   text-align: center;
-  color: #0000FF;
-  font-size: 62px;
+  color: #FF355E;
+  font-size: 30px;
 }
 
 .success{
@@ -82,7 +83,7 @@
   padding: 0;
   margin: 0;
   text-align: center;
-  color: #90EE90;
+  color: #66FF66;
   font-size: 30px;
 }
 
